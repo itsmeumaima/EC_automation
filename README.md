@@ -51,8 +51,8 @@ Whenever an admin uploads a new product:
 
 ###  Clone the Repository
 ```bash
-git clone https://github.com/itsmeumaima/ECommerce
-cd PostSync
+git clone <repo-name>
+cd ECOMMERCE
 ```
 ###  Create a Virtual Environment
 ```bash
@@ -66,9 +66,9 @@ source venv/bin/activate # on macOS/Linux
 pip install -r requirements.txt
 ```
 
-### Apply Migrations
+### switch to the working directory
 ```
-python manage.py migrate
+cd .\postsync\
 ```
 
 ### Run the Development Server
