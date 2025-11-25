@@ -470,6 +470,11 @@
                 class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 flex items-center">
                 <i class="fas fa-chart-line mr-2"></i> Analytics
             </a>
+            <a href="{% url 'dashboard:index' %}"
+            class="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 flex items-center">
+                <i class="fas fa-chart-line mr-2"></i> Dashboard
+            </a>
+
             {% else %}
             <!--  Normal User Links -->
             <a href="{% url 'cart:view_cart' %}"
@@ -480,17 +485,14 @@
                 class="text-primary hover:text-primary-dark font-medium transition-colors duration-300 flex items-center">
                 <i class="fas fa-credit-card mr-2"></i> Orders
             </a>
-            <a href="{% url 'dashboard:index' %}"
-                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 flex items-center">
-                <i class="fas fa-chart-line mr-2"></i> Dashboard
-            </a>
-            {% endif %}
-
-            <!-- Common Links for All Authenticated Users -->
+           
             <a href="{% url 'core:contact' %}"
                 class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary-dark transition-colors duration-300 flex items-center">
                 <i class="fas fa-envelope mr-2"></i> Inbox
             </a>
+            {% endif %}
+
+            
 
 
             <!--  Logout Button -->
@@ -541,16 +543,10 @@
                     Manage, publish, and track your content seamlessly across all channels.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-light hover:text-white transition-colors">
-                        <i class="fab fa-twitter text-xl"></i>
+                    <a href="https://www.instagram.com/ainwee_234/" class="text-light hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
                     </a>
-                    <a href="#" class="text-light hover:text-white transition-colors">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="#" class="text-light hover:text-white transition-colors">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="#" class="text-light hover:text-white transition-colors">
+                    <a href="https://www.facebook.com/profile.php?id=61582612695962" class="text-light hover:text-white transition-colors">
                         <i class="fab fa-facebook text-xl"></i>
                     </a>
                 </div>
@@ -562,22 +558,13 @@
                 <ul class="space-y-2">
                     <li><a href="{% url 'item:items' %}" class="text-light hover:text-white transition-colors">Browse
                             Content</a></li>
-                    <li><a href="#" class="text-light hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="#" class="text-light hover:text-white transition-colors">Contact</a></li>
-                    <li><a href="" class="text-light hover:text-white transition-colors">Pricing</a></li>
+                    <li><a href="{% url 'item:items' %}" class="text-light hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="{% url 'core:contact' %}" class="text-light hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="{% url 'cart:view_cart' %}" class="text-light hover:text-white transition-colors">Pricing</a></li>
                 </ul>
             </div>
 
-            <!-- Legal -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4 text-accent-light">Legal</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-light hover:text-white transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="text-light hover:text-white transition-colors">Terms of Service</a></li>
-                    <li><a href="#" class="text-light hover:text-white transition-colors">Cookie Policy</a></li>
-                    <li><a href="#" class="text-light hover:text-white transition-colors">Security</a></li>
-                </ul>
-            </div>
+            
         </div>
 
         <div class="max-w-7xl mx-auto mt-8 pt-8 border-t border-white border-opacity-20 text-center text-light">

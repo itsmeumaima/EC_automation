@@ -33,6 +33,13 @@ LOGOUT_REDIRECT_URL = '/'
 STRIPE_PUBLIC_KEY = "pk_test_51SNos70YfxqQT3X3YuqSMmxyDUgp5Uaua3Gv1VmOknE0U9sY1Ks4pm9XxX8Xhl6rg7WChPcMhKK9lxRw4KJwK26V00ZottGLJI"
 STRIPE_SECRET_KEY = "sk_test_51SNos70YfxqQT3X3ICs6Tsj6m7KRgXEqJEddS2qXaCYk9N33bwGjgNFBnj0cAHwY4qLLYz6P1k9WlkaDxW2DdPsq00YNgXFGyd"
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'umaimarauf2005@gmail.com'  # Replace with your Gmail
+# EMAIL_HOST_PASSWORD = 'your_app_password'  # Use App Password if 2FA is enabled
+
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api

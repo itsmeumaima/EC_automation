@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="max-w-7xl mx-auto">
-    <!-- Breadcrumb Navigation -->
+    
     <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
             <li class="inline-flex items-center">
@@ -44,7 +44,6 @@
                     
                     <div class="flex items-center mb-6">
                         <div class="flex items-center text-gray-600">
-                            <img src="{{ item.created_by.profile.image.url }}" alt="{{ item.created_by.username }}" class="w-10 h-10 rounded-full mr-3">
                             <div>
                                 <p class="font-medium">Listed by <a href="#" class="text-indigo-600 hover:text-indigo-800">{{ item.created_by.username }}</a></p>
                                 <p class="text-sm text-gray-500">Posted {{ item.created_at|date:"M d, Y" }}</p>

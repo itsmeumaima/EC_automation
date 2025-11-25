@@ -22,6 +22,7 @@ class Item(models.Model):
     price = models.FloatField()
     image = CloudinaryField('image', blank=True, null=True)
     quantity = models.PositiveIntegerField(default=0)
+    actual_quantity = models.PositiveIntegerField(default=0)  
     is_sold = models.BooleanField(default=False)
     created_by = models.ForeignKey(User, related_name='items', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

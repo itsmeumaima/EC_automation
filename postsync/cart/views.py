@@ -32,7 +32,7 @@ def add_to_cart(request, item_id):
         cart_item.save()
         return redirect('cart:view_cart')
 
-    # if GET request → show quantity input form
+    # if GET request show quantity input form
     return render(request, 'cart/add_to_cart.html', {'item': item})
 
 
@@ -112,7 +112,7 @@ def payment_success(request):
             payment.status = 'completed'
             payment.save()
 
-            # ✅ Process each cart item
+            # Process each cart item
             for ci in cart.cart_items.all():
                 item = ci.item
                 category = item.category
@@ -136,18 +136,18 @@ def payment_success(request):
 
                 print(f"After purchase: {item.name} (qty={item.quantity})")
 
-                # ✅ Instead of deleting, mark as sold when quantity = 0
+                # Instead of deleting, mark as sold when quantity = 0
                 if item.quantity == 0:
                     item.is_sold = True
                     print(f"Marking item as sold: {item.name}")
                 item.save()
 
-                # ✅ Optionally delete category only if it has no unsold items
+                # Optionally delete category only if it has no unsold items
                 if not category.items.filter(is_sold=False).exists():
                     print(f"Deleting category (no unsold items left): {category.name}")
                     category.delete()
 
-            # ✅ Clear the cart after purchase
+            # Clear the cart after purchase
             cart.cart_items.all().delete()
 
             messages.success(request, "Payment successful! Thank you for your purchase.")

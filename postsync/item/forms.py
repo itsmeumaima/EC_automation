@@ -18,12 +18,12 @@ class NewItemForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASSES
             }),
-            'price': forms.NumberInput(attrs={  # better use NumberInput for numeric fields
+            'price': forms.NumberInput(attrs={ 
                 'class': INPUT_CLASSES
             }),
-            'quantity': forms.NumberInput(attrs={  # 🔹 Added quantity widget
+            'quantity': forms.NumberInput(attrs={  
                 'class': INPUT_CLASSES,
-                'min': 0,  # no negative stock
+                'min': 0,  
                 'placeholder': 'Enter available stock quantity'
             }),
             'image': forms.FileInput(attrs={
@@ -50,7 +50,7 @@ class EditItemForm(forms.ModelForm):
             'price': forms.NumberInput(attrs={
                 'class': INPUT_CLASSES
             }),
-            'quantity': forms.NumberInput(attrs={  # 🔹 Added quantity widget
+            'quantity': forms.NumberInput(attrs={  
                 'class': INPUT_CLASSES,
                 'min': 0,
                 'placeholder': 'Enter available stock quantity'

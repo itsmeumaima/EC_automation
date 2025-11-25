@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from postsync.settings import EMAIL_HOST_USER
 from .forms import SignUpForm
 from django.db.models import Count, Q
 from item.models import Item, Category
-
-# ---------------------------
-# HOME / INDEX VIEW
-# ---------------------------
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail  # optional if you want to email
+from django.contrib import messages
 
 
 def index(request):
@@ -37,16 +37,37 @@ def index(request):
         'popular_by_category': popular_by_category,
     })
 
-# ---------------------------
-# CONTACT VIEW
-# ---------------------------
+
+
 def contact(request):
-    return render(request, 'core/contact.html')
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+
+        # Print message to console for debugging
+        print(f"New contact message from {name} ({email}): {subject}\n{message}")
+
+        try:
+            
+            send_mail(
+                subject,
+                message,
+                EMAIL_HOST_USER,  
+                ['umaimaabdulrauf702@gmail.com'],  # recipient
+                fail_silently=False,
+            )
+            messages.success(request, "Your message has been sent!")
+        except Exception as e:
+            print("Email sending failed:", e)
+            messages.error(request, "Email sending failed. Please try again later.")
+
+        return redirect("core:contact")
+
+    return render(request, "core/contact.html")
 
 
-# ---------------------------
-# SIGNUP VIEW
-# ---------------------------
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -60,10 +81,6 @@ def signup(request):
         'form': form
     })
 
-
-# ---------------------------
-# LOGOUT VIEW
-# ---------------------------
 @login_required
 def logout_view(request):
     logout(request)
