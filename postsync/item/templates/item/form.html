@@ -88,6 +88,27 @@
                                     required>
                             </div>
                         </div>
+                        <!-- Actual Quantity Field -->
+                        <div>
+                            <label for="{{ form.actual_quantity.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                                Actual Quantity <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-box text-gray-400"></i>
+                                </div>
+                                <input type="number" 
+                                    name="{{ form.actual_quantity.name }}" 
+                                    id="{{ form.actual_quantity.id_for_label }}"
+                                    value="{{ form.actual_quantity.value|default:'' }}"
+                                    min="0"
+                                    class="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg
+                                        focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
+                                        transition-colors duration-300"
+                                    placeholder="Enter actual stock quantity"
+                                    required>
+                            </div>
+                        </div>
 
                         <!-- Category Field -->
                         <div>

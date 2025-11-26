@@ -7,8 +7,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Cart, Payment,CartItem, PaymentItem
 
-
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required

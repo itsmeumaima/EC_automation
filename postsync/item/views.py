@@ -76,7 +76,7 @@ def new(request):
 
     return render(request, 'item/form.html', {
         'form': form,
-        'title': 'New item',
+        'title': 'Create Item',
     })
 
 @login_required

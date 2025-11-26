@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
 
-
 class Category(models.Model):
     name = models.CharField(max_length=100)
 

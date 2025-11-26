@@ -1,18 +1,12 @@
 from django.contrib import admin
 from .models import Category, Item
 
-# ----------------------
-# CATEGORY ADMIN
-# ----------------------
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')  # Show all relevant fields
     search_fields = ('name',)
 
-
-# ----------------------
-# ITEM ADMIN
-# ----------------------
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = (
@@ -21,7 +15,8 @@ class ItemAdmin(admin.ModelAdmin):
         'category', 
         'description', 
         'price', 
-        'quantity', 
+        'quantity',
+        'actual_quantity', 
         'is_sold', 
         'created_by', 
         'created_at',

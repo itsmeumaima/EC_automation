@@ -26,17 +26,30 @@ def analytics_dashboard(request):
     total_staff = User.objects.filter(is_staff=True).count()
     total_customers = total_users - total_staff
 
+    # # Total stock and sold units using actual_quantity and quantity
+    # total_items = Item.objects.aggregate(total=Sum('actual_quantity'))['total'] or 0
+    # total_sold_units = Item.objects.aggregate(
+    #     total=Sum(F('actual_quantity') - F('quantity'))
+    # )['total'] or 0
+    # total_unsold_units = total_items - total_sold_units
+
+    # # Total revenue = price * sold_quantity
+    # total_revenue = Item.objects.aggregate(
+    #     total=Sum(F('price') * (F('actual_quantity') - F('quantity')))
+    # )['total'] or 0
     # Total stock and sold units using actual_quantity and quantity
-    total_items = Item.objects.aggregate(total=Sum('actual_quantity'))['total'] or 0
-    total_sold_units = Item.objects.aggregate(
+    total_items = max(Item.objects.aggregate(total=Sum('actual_quantity'))['total'] or 0, 0)
+
+    total_sold_units = max(Item.objects.aggregate(
         total=Sum(F('actual_quantity') - F('quantity'))
-    )['total'] or 0
-    total_unsold_units = total_items - total_sold_units
+    )['total'] or 0, 0)
+
+    total_unsold_units = max(total_items - total_sold_units, 0)
 
     # Total revenue = price * sold_quantity
-    total_revenue = Item.objects.aggregate(
+    total_revenue = max(Item.objects.aggregate(
         total=Sum(F('price') * (F('actual_quantity') - F('quantity')))
-    )['total'] or 0
+    )['total'] or 0, 0)
 
     # ---- Dates for charts ----
     today = datetime.today()
